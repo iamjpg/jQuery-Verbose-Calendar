@@ -21,9 +21,15 @@
 	<script>
 		$(document).ready(function() {
 			$("#main-container").calendar({
-				tipsy_gravity: 's'
+				tipsy_gravity: 's', // How do you want to anchor the tipsy notification?
+				click_callback: calendar_callback, // Callback to return the clicked date
+				year: "1994" // Optional - pass in a year - Integer or String
 			});
 		});
+
+		var calendar_callback = function(date) {
+			alert(date);
+		}
 	</script>
 </head>
 <body>

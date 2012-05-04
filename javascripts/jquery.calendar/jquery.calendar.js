@@ -1,14 +1,10 @@
 (function($, window, document) {
 
 	//
-	// Plugin Name
-	pluginName = 'calendar';
-
-	pl = null;
-
-	//
-	// Date default
-	d = new Date();
+	// Globals
+	var pluginName = 'calendar',
+		pl = null,
+		d = new Date()
 
 	//
 	// Defaults
@@ -70,6 +66,8 @@
 	// Init
 	Calendar.prototype.init = function() {
 
+		//
+		// Call print - who knows, maybe more will be added to the init function...
 		this.print();
 	}
 
@@ -77,7 +75,7 @@
 
 		//
 		// Pass in any year you damn like.
-		var the_year = (year) ? year : pl.options.year;
+		var the_year = (year) ? parseInt(year) : parseInt(pl.options.year);
 
 		//
 		// First, clear the element
@@ -92,20 +90,28 @@
 		$(this.element).append('<div id=\"calendar\"></div>');
 
 		//
+		// Set variable for calendar DOM object
+		var $_calendar = $("#calendar");
+
+		//
 		// Let's append the year
 		$.each(the_year.toString(), function(i,o) {
-			$('#calendar').append('<div class=\"year\">' + o + '</div>');
+			$_calendar.append('<div class=\"year\">' + o + '</div>');
 		});
 
 		//
 		// Navigation arrows
-		$('#calendar').append('<div id=\"arrows\"></div>');
-		$('#arrows').append('<div class=\"next\"></div>');
-		$('#arrows').append('<div class=\"prev\"></div>');
+		$_calendar.append('<div id=\"arrows\"></div>');
+
+		//
+		// DOM object reference for arrows
+		$_arrows = $('#arrows');
+		$_arrows.append('<div class=\"next\"></div>');
+		$_arrows.append('<div class=\"prev\"></div>');
 
 		//
 		// Add a clear for the floated elements
-		$('#calendar').append('<div class=\"clear\"></div>');
+		$_calendar.append('<div class=\"clear\"></div>');
 
 		//
 		// Loop over the month arrays, loop over the characters in teh string, and apply to divs.
@@ -113,19 +119,19 @@
 
 			//
 			// Create a scrollto marker
-			$('#calendar').append("<div id='" + o + "'></div>");
+			$_calendar.append("<div id='" + o + "'></div>");
 
 			$.each(month_array[i], function(i, o) {
 
 				//
 				// Looping over characters, apply them to divs
-				$('#calendar').append('<div class=\"label bold\">' + o + '</div>');
+				$_calendar.append('<div class=\"label bold\">' + o + '</div>');
 
 			});
 
 			//
 			// Add a clear for the floated elements
-			$('#calendar').append('<div class=\"clear\"></div>');
+			$_calendar.append('<div class=\"clear\"></div>');
 
 			//
 			// Check for leap year
@@ -150,12 +156,12 @@
 
 				//
 				// Looping over numbers, apply them to divs
-				$('#calendar').append("<div data-date='" + (parseInt(i) + 1) + '/' + j + '/' + the_year + "' class='label day " + today + "'>" + j + '</div>');
+				$_calendar.append("<div data-date='" + (parseInt(i) + 1) + '/' + j + '/' + the_year + "' class='label day " + today + "'>" + j + '</div>');
 			}
 
 			//
 			// Add a clear for the floated elements
-			$('#calendar').append('<div class=\"clear\"></div>');
+			$_calendar.append('<div class=\"clear\"></div>');
 		});
 
 		//
@@ -173,7 +179,9 @@
 						$(this).attr('original-title', pl.returnFormattedDate($(this).attr('data-date')));
 
 						$(this).on('click', function() {
-							alert($(this).attr('data-date'));
+							if (typeof pl.options.click_callback == "function") {
+								pl.options.click_callback.call(this, $(this).attr('data-date'));
+							}
 						});
 					});
 
@@ -191,13 +199,13 @@
 	//
 	// Previous / Next Year on click events
 	$(document).on('click', '.next', function() {
-		pl.options.year = pl.options.year + 1;
+		pl.options.year = parseInt(pl.options.year) + 1;
 
 		pl.print(pl.options.year);
 	});
 
 	$(document).on('click', '.prev', function() {
-		pl.options.year = pl.options.year - 1;
+		pl.options.year = parseInt(pl.options.year) - 1;
 
 		pl.print(pl.options.year);
 	});
