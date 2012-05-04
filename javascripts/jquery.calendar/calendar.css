@@ -36,6 +36,7 @@
 #calendar .label.bold {
 	color: #FFF;
 	background: #000;
+	text-transform: uppercase;
 }
 
 #arrows {

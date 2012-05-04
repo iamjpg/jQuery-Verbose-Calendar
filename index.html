@@ -21,20 +21,29 @@
 	<script>
 		$(document).ready(function() {
 			$("#main-container").calendar({
-				tipsy_gravity: 's', // How do you want to anchor the tipsy notification?
+				tipsy_gravity: 's', // How do you want to anchor the tipsy notification? (n / s / e / w)
 				click_callback: calendar_callback, // Callback to return the clicked date
-				year: "1994" // Optional - pass in a year - Integer or String
+				year: "2012" // Optional, defaults to current year - pass in a year - Integer or String
 			});
 		});
 
+		//
+		// Example of callback - do something with the returned date
 		var calendar_callback = function(date) {
 			alert(date);
 		}
 	</script>
 </head>
 <body>
+	<div id="header">
+		jQuery Expanded Calendar - Brought to you by <a href="http://twitter.com/iamjpg">John Patrick Given</a>.
+	</div>
 	<div id="main-container">
 		
 	</div>
+
+	<!-- Begin Twitter banner code - http://twtbnr.com -->
+	<div style="overflow:hidden; top: 0px; right: 0px; display: inline-block; position: absolute; z-index: 1000; width: 200px; height: 200px;"><div style="position: relative;top: -76px; right: 18px;"><a href="http://twitter.com/iamjpg"><img border="0" src="http://twtbnr.com/images/bnr_right.png"></a></div></div>
+	<!-- End Twitter banner code - http://twtbnr.com -->
 </body>
 </html>
