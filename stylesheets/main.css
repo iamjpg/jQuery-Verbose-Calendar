@@ -1,0 +1,10 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica,Arial,sans-serif;
+	background: url('../images/bg-body.gif');
+}
+
+#main-container {
+	margin: 0 0 0 0;
+}
