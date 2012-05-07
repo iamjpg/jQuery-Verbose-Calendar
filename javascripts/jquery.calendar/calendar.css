@@ -39,30 +39,30 @@
 	text-transform: uppercase;
 }
 
-#arrows {
+#calendar #arrows {
 	float: left;
 	cursor: pointer;
 }
 
-#arrows .next {
+#calendar #arrows .next {
 	background: #000 url('images/arrow-next.gif') no-repeat center center;
 	width: 49px;
 	height: 49px;
 	margin: 1px 0 1px 1px;
 }
 
-#arrows .next:hover {
+#calendar #arrows .next:hover {
 	background: #399afe url('images/arrow-next.gif') no-repeat center center;;
 }
 
-#arrows .prev {
+#calendar #arrows .prev {
 	background: #000 url('images/arrow-prev.gif') no-repeat center center;
 	width: 49px;
 	height: 49px;
 	margin-left: 1px;
 }
 
-#arrows .prev:hover {
+#calendar #arrows .prev:hover {
 	background: #399afe url('images/arrow-prev.gif') no-repeat center center;;
 }
 
