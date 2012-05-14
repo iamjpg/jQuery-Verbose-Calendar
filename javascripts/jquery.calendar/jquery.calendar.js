@@ -183,8 +183,8 @@
 							if (typeof pl.options.click_callback == 'function') {
 								var d = $(this).attr('data-date').split("/");
 								var dObj = {}
-								dObj.day = d[0];
-								dObj.month = d[1];
+								dObj.day = d[1];
+								dObj.month = d[0];
 								dObj.year = d[2];
 								pl.options.click_callback.call(this, dObj);
 							}
