@@ -181,7 +181,12 @@
 
 						$(this).on('click', function() {
 							if (typeof pl.options.click_callback == 'function') {
-								pl.options.click_callback.call(this, $(this).attr('data-date'));
+								var d = $(this).attr('data-date').split("/");
+								var dObj = {}
+								dObj.day = d[0];
+								dObj.month = d[1];
+								dObj.year = d[2];
+								pl.options.click_callback.call(this, dObj);
 							}
 						});
 					});

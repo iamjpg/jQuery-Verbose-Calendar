@@ -31,7 +31,12 @@
 		//
 		// Example of callback - do something with the returned date
 		var calendar_callback = function(date) {
-			alert(date);
+			
+			//
+			// Returned date is a date object containing the day, month, and year.
+			// date.day = day; date.month = month; date.year = year;
+			alert("Open your Javascript console to see the returned result object.");
+			console.log(date);
 		}
 	</script>
 </head>
