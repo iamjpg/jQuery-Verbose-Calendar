@@ -16,8 +16,8 @@ If you already source these plugins, you'll want to remove them from the calenda
     	$("#calendar-container").calendar({
 			tipsy_gravity: 's', // How do you want to anchor the tipsy notification? (n / s / e / w)
 			click_callback: function(date) {
-                alert(date);
-            }, // Callback to return the clicked date
+                console.log(date);
+            }, // Callback to return the clicked date object
 			year: "2012", // Optional start year, defaults to current year - pass in a year - Integer or String
 			scroll_to_date: false // Scroll to the current day?
 		});
